@@ -137,6 +137,7 @@ function useCreatePost() {
 		const newPost = {
 			caption: caption,
 			likes: [],
+			permnanentComments: [],
 			comments: [],
 			createdAt: Date.now(),
 			createdBy: authUser.uid,
