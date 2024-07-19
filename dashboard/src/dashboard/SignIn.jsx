@@ -40,10 +40,8 @@ const DashboardSignIn = () => {
   };
 
   return (
-    // <div className="bg-[url('image.png')] h-screen bg-cover bg-center bg-fixed bg-opacity-50 pt-20 relative">
-    <div className=" h-screen bg-cover bg-center bg-fixed bg-opacity-50 pt-20 relative">
-      {/* <div className=" absolute top-1/5 left-2/4"> */}
-      <div className=" absolute left-1/4 ml-10">
+    <div className="bg-[url('image.png')] h-screen bg-cover bg-center bg-fixed bg-opacity-50 pt-20 relative">
+      <div className=" absolute top-1/5 left-2/4">
         <div className="border p-5 mt-20 mx-20 h-[529px] w-[482px] rounded-3xl shadow-lg">
           <h3 className="text-center font-semibold text-3xl my-10">
             Welcome back 👋🏻

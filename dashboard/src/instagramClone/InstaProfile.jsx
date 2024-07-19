@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { collection, query, where, getDocs, getFirestore } from 'firebase/firestore';
-import { Avatar, FormControlLabel, Switch } from '@mui/material';
+import { Avatar, Button, FormControlLabel, Switch } from '@mui/material';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import Loading from '../components/Loading';
+import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
+
 
 const instagramCloneConfig = {
   apiKey: "AIzaSyCmgx8Gp1NHeFx2of6hvpeKM-uXnI-JmuA",
@@ -72,7 +74,13 @@ const UserProfile = () => {
       <div className=' text-right'>
         {/* <FormControlLabel control={<Switch />} label="Toggle filter" /> */}
       </div>
-      <h2 className='font-bold text-3xl p-4 mt-20'>Posts</h2>
+      <div className='my-10 flex justify-end'>
+        <FormControlLabel
+          control={<Switch />}
+          label="Turn on to delete non-clean comments"
+        />
+      </div>
+      <h2 className='font-bold text-3xl p-4'>Posts</h2>
       <div className='grid grid-cols-3 gap-4 p-5 pl-10'>
         {posts.map(post => (
           <div key={post.id} className='border rounded-lg overflow-hidden'>
@@ -95,6 +103,11 @@ const UserProfile = () => {
             </div>
             <div className='flex justify-between'>
               <p className=' pt-2 pl-2 m-2'>{post.caption}</p>
+              <Link to={`/analytics/${post.id}`}>
+              <p className='my-2 ml-24 bg-[#6D31ED] text-white px-4 py-2 rounded-xl'>
+                <TrendingUpRoundedIcon  />
+              </p>
+              </Link>
               <Link to={`/comments/${post.id}`}>
                 <button className='m-2 bg-[#6D31ED] text-white px-4 py-2 rounded-xl'>View Comments</button>
               </Link>

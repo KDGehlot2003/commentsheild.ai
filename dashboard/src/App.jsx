@@ -38,11 +38,12 @@ const AppContent = () => {
         <Route path="/userdashboard" element={user ? <Dashboard /> : <Navigate to="/signin" />} />
         <Route path="/instagram-clone-signin" element={user ? <InstagramCloneSignIn /> : <Navigate to="/signin" />} />
         <Route path="/instaprofile" element={user ? <InstaProfile /> : <Navigate to="/signin" />} />
-        <Route path="/analytics" element={user ? <Analytics /> : <Navigate to="/signin" />} />
         <Route path="/profile" element={user ? <UserProfile /> : <Navigate to="/signin" />} />
         <Route path="/posts" element={user ? <UserPosts /> : <Navigate to="/signin" />} />
         <Route path="/comments/:postId" element={user ? <ViewComments /> : <Navigate to="/signin" />} />
+        <Route path="/analytics/:postId" element={user ? <Analytics /> : <Navigate to="/signin" />} />
         <Route path="*" element={<Navigate to="/signin" />} />
+        {/* <Route path="/analytics" element={user ? <Analytics /> : <Navigate to="/signin" />} /> */}
       </Routes>
     </>
   );

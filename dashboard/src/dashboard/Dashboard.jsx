@@ -42,7 +42,7 @@ const Dashboard = () => {
           });
         }
 
-        navigate('/userdashboard', { state: { userData } }); // TODO
+        navigate('/instaprofile', { state: { userData } });
       } 
     } catch (error) {
         toast.error(`Failed to sign in: ${error.message}`);
@@ -50,7 +50,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className='mt-20 ml-20 h-full'>
+    <div className='mt-20 ml-20 h-full'>  
       <Toaster />
       <div className='flex'>
         {instagramAccounts.map((account, index) => (

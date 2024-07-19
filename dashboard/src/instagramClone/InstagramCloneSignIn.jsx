@@ -45,7 +45,7 @@ const InstagramCloneSignIn = () => {
           });
         }
 
-        navigate('/userdashboard', { state: { userData } }); // TODO
+        navigate('/instaprofile', { state: { userData } });
       } else {
         setError("No profile found");
       }
