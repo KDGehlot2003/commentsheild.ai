@@ -102,9 +102,9 @@ const UserProfile = () => {
               {console.log(post)}
             </div>
             <div className='flex justify-between'>
-              <p className=' pt-2 pl-2 m-2'>{post.caption}</p>
+              <p className=' pt-2 pl-2 m-2 max-w-20'>{post.caption}</p>
               <Link to={`/analytics/${post.id}`}>
-              <p className='my-2 ml-24 bg-[#6D31ED] text-white px-4 py-2 rounded-xl'>
+              <p className='my-2 ml-16 bg-[#6D31ED] text-white px-4 py-2 rounded-xl'>
                 <TrendingUpRoundedIcon  />
               </p>
               </Link>

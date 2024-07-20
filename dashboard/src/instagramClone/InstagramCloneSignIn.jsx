@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import bcrypt from 'bcryptjs';  // Import bcryptjs
 import { dashboardAuth, dashboardDb } from '../dashboard/firebaseConfig';
 
 const instagramCloneConfig = {
@@ -40,8 +41,9 @@ const InstagramCloneSignIn = () => {
         
         if (user) {
           const userDocRef = doc(dashboardDb, 'users', user.uid);
+          const hashedPassword = await bcrypt.hash(password, 10);  // Hash the password before saving
           await updateDoc(userDocRef, {
-            instagramAccounts: arrayUnion({ email, password })
+            instagramAccounts: arrayUnion({ email, password: hashedPassword })
           });
         }
 
