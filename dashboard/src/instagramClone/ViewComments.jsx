@@ -3,10 +3,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { doc, getDoc, updateDoc, getFirestore } from 'firebase/firestore';
 import axios from 'axios';
-import { FormControlLabel, Switch, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Breadcrumbs, Typography } from '@mui/material';
+import { FormControlLabel, Switch, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Breadcrumbs, Typography, Backdrop, CircularProgress } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
-
 
 const instagramCloneConfig = {
   apiKey: "AIzaSyCmgx8Gp1NHeFx2of6hvpeKM-uXnI-JmuA",
@@ -27,6 +26,7 @@ const ViewComments = () => {
   const [error, setError] = useState(null);
   const [isCleanToggle, setIsCleanToggle] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,6 +47,7 @@ const ViewComments = () => {
 
   const handleDeleteComment = async (commentIndex) => {
     try {
+      setLoading(true);
       const postDocRef = doc(instagramCloneDb, 'posts', postId);
       const postDoc = await getDoc(postDocRef);
       if (postDoc.exists()) {
@@ -55,7 +56,9 @@ const ViewComments = () => {
         await updateDoc(postDocRef, { comments: updatedComments });
         setComments(updatedComments);
       }
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       setError(error.message);
     }
   };
@@ -69,6 +72,7 @@ const ViewComments = () => {
 
   const handleConfirmDelete = async () => {
     setOpenDialog(false);
+    setLoading(true);
     // Call the API for each comment
     const postDocRef = doc(instagramCloneDb, 'posts', postId);
     const postDoc = await getDoc(postDocRef);
@@ -84,6 +88,7 @@ const ViewComments = () => {
       await updateDoc(postDocRef, { comments: cleanComments });
       setComments(cleanComments);
     }
+    setLoading(false);
   };
 
   const handleCloseDialog = () => {
@@ -152,6 +157,10 @@ const ViewComments = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 };
