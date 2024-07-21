@@ -14,6 +14,7 @@ import InstaProfile from './instagramClone/InstaProfile';
 import ViewComments from './instagramClone/ViewComments';
 import Loading from './components/Loading';
 import Analytics from './dashboard/Analytics';
+import About from './dashboard/About';
 
 const AppContent = () => {
   const [user, loading] = useAuthState(dashboardAuth);
@@ -42,6 +43,7 @@ const AppContent = () => {
         <Route path="/posts" element={user ? <UserPosts /> : <Navigate to="/signin" />} />
         <Route path="/comments/:postId" element={user ? <ViewComments /> : <Navigate to="/signin" />} />
         <Route path="/analytics/:postId" element={user ? <Analytics /> : <Navigate to="/signin" />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<Navigate to="/signin" />} />
         {/* <Route path="/analytics" element={user ? <Analytics /> : <Navigate to="/signin" />} /> */}
       </Routes>
