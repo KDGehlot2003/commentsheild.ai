@@ -19,6 +19,3 @@ The model is specifically fine-tuned for Hinglish (a combination of Hindi and En
 
 The fine-tuned BERT model effectively detects abusive content with:
 - Accuracy: 95%
-- Precision: 92%
-- Recall: 94%
-- F1-Score: 93%
