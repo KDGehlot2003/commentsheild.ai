@@ -1,4 +1,4 @@
-# Abusive Word Detection for Social Media Platforms
+# Real-Time Filtering of Abusive Language for Social Media Applications
 
 This project addresses the pressing issue of abusive language and harmful comments on social media platforms. It leverages the power of Natural Language Processing (NLP) and Deep Learning to automatically detect and remove abusive words or phrases from user-generated content.
 
